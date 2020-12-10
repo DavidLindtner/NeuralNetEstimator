@@ -1,6 +1,5 @@
 %%  Neural network estimator
 %%  Deadline 15.12.2020 23:59
-%   Xavier initialization
 
 clear; close all; clc;
 
@@ -18,13 +17,16 @@ noNeuronHL = 20;
 divideRatio = 0.8;
 %activationFunction = 'purelin';     %   Linear tf
 %activationFunction = 'tansig';      %   Hyperbolic tangent sigmoid transfer function
-activationFunction = 'poslin';      %   ReLU
+%activationFunction = 'poslin';      %   ReLU
+activationFunction = 'logsig';      %   Log-sigmoid transfer function
 
-%weightInit = 'zeros';               %   
-%weightInit = 'ones';                %   
-weightInit = 'rand';                %
 %weightInit = 'randsmall';
-%weightInit = 'rands';
+weightInit = 'rands';
+%weightInit = 'initzero';
+
 [neuralOut, train, test, valid, time] = ex4(noNeuronHL, u', y', divideRatio, activationFunction, weightInit);
 
 plotting(y, neuralOut)
+
+
+
