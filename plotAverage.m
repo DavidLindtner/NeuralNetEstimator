@@ -9,8 +9,7 @@ function [] = plotAverage(realOut,neuralOuts)
     end
     average = average/s(2);
     
-    figure(10)
-    p1 = plot(neuralOuts,'color',[0.5 0.5 0.5]);
+    p1 = plot(neuralOuts,'color',[0.8 0.8 0.8]);
     hold on
     p3 = plot(average,'LineWidth',1.5,'color',[0, 0.4470, 0.7410]);
     p2 = plot(realOut,'LineWidth',1.5,'color',[0.8500, 0.3250, 0.0980]);
