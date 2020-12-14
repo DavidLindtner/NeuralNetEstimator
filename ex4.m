@@ -56,6 +56,6 @@ function [out, trainPerformance, testPerformance, validPerformance, time] = ex4(
     %trainPerformance = tr.perf;
     %testPerformance = tr.tperf;
     %validPerformance = tr.vperf;
-    out = neuralNet(inputs);
+    out = neuralNet(inputs)';
 end
 

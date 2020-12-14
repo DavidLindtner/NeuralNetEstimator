@@ -1,21 +1,13 @@
 %%  Neural network estimator
 %%  Deadline 15.12.2020 23:59
-
 clear; close all; clc;
 
 %%  EX2 - Updating database
-data = ex2();
-
-%%  EX3 - Dividing data to training and testing
-%ratio = 1;
-%[trainU, trainY, testU, testY] = ex3(data, ratio);
-u = [data.u1 data.u3 data.u4 data.u5 data.u67];
-y = data.y;
+[u, y] = ex2('tpcda21_02_dataset.mat');
 
 %%  EX4 = Levenberg-Marquardt backpropagation
 noNeuronHL = 20;
 divideRatio = 0.8;
-%activationFunction = 'purelin';     %   Linear tf
 %activationFunction = 'tansig';      %   Hyperbolic tangent sigmoid transfer function
 %activationFunction = 'poslin';      %   ReLU
 activationFunction = 'logsig';      %   Log-sigmoid transfer function
@@ -24,9 +16,23 @@ activationFunction = 'logsig';      %   Log-sigmoid transfer function
 weightInit = 'rands';
 %weightInit = 'initzero';
 
-[neuralOut, train, test, valid, time] = ex4(noNeuronHL, u', y', divideRatio, activationFunction, weightInit);
+[neuralOut1, trainAccLMB, testAccLMB, validAccLMB, timeLMB] = ex4(noNeuronHL, u', y', divideRatio, activationFunction, weightInit);
+trainAccLMB
+testAccLMB
+timeLMB
 
-plotting(y, neuralOut)
+[neuralOut2, trainAccELM, testAccELM, timeELM] = ex6(noNeuronHL, u', y', divideRatio, activationFunction, weightInit);
+trainAccELM
+testAccELM
+timeELM
+
+figure(1)
+plotting(y, neuralOut1, 0);
+
+figure(2)
+plotting(y, neuralOut2, 1);
+
+%plotAverage(y, [neuralOut1, neuralOut2, neuralOut3, neuralOut4, neuralOut5]);
 
 
 
